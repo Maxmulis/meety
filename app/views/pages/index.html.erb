@@ -1,4 +1,8 @@
 <h1>Pages#index</h1>
 <p>Find me in app/views/pages/index.html.erb</p>
 
-<h2><%= @r %></h2>
+<p>--</p>
+
+<% @res_JSON.each do |k, v| %>
+  <p>Key: <%= k %>, and Value: <%= v %></p>
+<% end %>
