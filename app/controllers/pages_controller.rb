@@ -1,17 +1,18 @@
-require 'uri'
 require 'net/http'
 
 class PagesController < ApplicationController
   def index
-    api_key_string = Rails.application.credentials.geoapify
-    uri = URI("http://api.geoapify.com/v2/places?categories=commercial.supermarket&apiKey=#{api_key_string}")
+    cat = 'commercial.supermarket'
+    # filters = 'circle:-87.770231,41.878968,5000'
+    filters = "circle:#{params['long']},#{params['lat']},#{params['range']}"
+    api_key_string = Rails.application.credentials.development.geoapify
+
+    uri = URI("https://api.geoapify.com/v2/places?categories=#{cat}&filter=#{filters}&apiKey=#{api_key_string}")
     res = Net::HTTP.get_response(uri)
 
     return unless res.is_a?(Net::HTTPSuccess)
 
-    @res_JSON = JSON.parse(res)
-
-    puts 'JSON?::'
-    puts @res_JSON
+    json = JSON.parse(res.body)
+    @res_JSON = JSON.pretty_generate(json)
   end
 end
