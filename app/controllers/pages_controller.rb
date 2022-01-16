@@ -1,6 +1,8 @@
 require 'net/http'
+
 class PagesController < ApplicationController
   rescue_from Net::HTTPBadRequest, with: :bad_request
+
   def index
     cat = 'catering.restaurant'
     lat = 52.5068959
