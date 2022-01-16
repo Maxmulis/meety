@@ -11,6 +11,7 @@ class PagesController < ApplicationController
     uri = URI("https://api.geoapify.com/v2/places?categories=#{cat}&filter=#{filters}&apiKey=#{api_key_string}")
     res = Net::HTTP.get_response(uri)
     json = JSON.parse(res.body)
+    binding.pry
     render json: json, status: :ok
   end
 
