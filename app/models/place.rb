@@ -1,14 +1,18 @@
 class Place
+  include ActiveModel::Model
   attr_reader :lat, :lon, :name, :number, :street
 
-  def initialize(*attr)
-    hash = ActiveSupport::HashWithIndifferentAccess.new(attr.first)
-    @lat = hash[:lat]
-    @lon = hash[:lon]
-    @name = hash[:name]
-    @number = hash[:number]
-    @street = hash[:street]
-    @categories = hash[:categories]
+  validates :lat, :lon, :name, presence: true
+
+  def initialize(attr = {})
+    attr = JSON.parse(attr, symbolize_names: true) if attr.is_a?(String)
+
+    @lat = attr[:lat]
+    @lon = attr[:lon]
+    @name = attr[:name]
+    @number = attr[:number] || attr[:housenumber].to_i
+    @street = attr[:street]
+    @categories = attr[:categories]
   end
 
   def is_restaurant?
