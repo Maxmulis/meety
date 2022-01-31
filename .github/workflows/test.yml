@@ -51,5 +51,6 @@ jobs:
         run: | # Pipe is important, adds line breaks
           cp config/database.github.yml config/database.yml
           bundle exec rails db:test:prepare
+          bundle exec rails db:migrate
       - name: Run tests
         run: bundle exec rspec
