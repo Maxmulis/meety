@@ -9,6 +9,22 @@ jobs:
       RAILS_ENV: test
       NODE_ENV: test
     runs-on: ubuntu-latest # runner
+    services:
+    # Label used to access the service container
+      postgres:
+      # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - name: Checkout repository # copies repo in runner
         uses: actions/checkout@v2 # short for https://github.com/actions/checkout
@@ -31,5 +47,9 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
       - name: Yarn install
         run: yarn install --frozen-lockfile
+      - name: Prepare DB
+        run: | # Pipe is important, adds line breaks
+          cp config/database.github.yml config/database.yml
+          bundle exec rails db:test:prepare
       - name: Run tests
         run: bundle exec rspec
