@@ -1,1 +1,8 @@
-<H1>index</H1>
+<h1>index</h1>
+
+<%= form_with data: { turbo: false }, url: "/show", method: :post do |form| %>
+  <%= form.label :address_field_one, "Search for:" %>
+  <%= form.text_field :address_field_one %>
+  <%= form.text_field :address_field_two %>
+  <%= form.submit "🙅 Fire it up" %>
+<% end %>

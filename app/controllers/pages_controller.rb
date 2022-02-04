@@ -8,6 +8,17 @@ class PagesController < ApplicationController
     # render json: json, status: :ok
   end
 
+  def show
+    address_uno = params[:address_field_one]
+    address_dos = params[:address_field_two]
+
+    coordinates_uno = GetGeocodeAddress.call(address_uno)
+    coordinates_dos = GetGeocodeAddress.call(address_dos)
+
+    @place_uno = GetPage.call(coordinates_uno)
+    @place_dos = GetPage.call(coordinates_dos)
+  end
+
   private
 
   def bad_request(error)
