@@ -1,6 +1,6 @@
 require 'net/http'
 
-class GetPage < ApplicationService
+class GetPlace < ApplicationService
   API_KEY = Rails.application.credentials.geoapify
 
   def initialize(coordinates)

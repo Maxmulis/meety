@@ -15,8 +15,8 @@ class PagesController < ApplicationController
     coordinates_uno = GetGeocodeAddress.call(address_uno)
     coordinates_dos = GetGeocodeAddress.call(address_dos)
 
-    @place_uno = GetPage.call(coordinates_uno)
-    @place_dos = GetPage.call(coordinates_dos)
+    @place_uno = GetPlace.call(coordinates_uno)
+    @place_dos = GetPlace.call(coordinates_dos)
   end
 
   private
