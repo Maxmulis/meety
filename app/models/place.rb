@@ -18,5 +18,4 @@ class Place
   def is_restaurant?
     @categories.include?('catering.restaurant')
   end
-
 end
