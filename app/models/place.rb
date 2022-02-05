@@ -18,4 +18,11 @@ class Place
   def is_restaurant?
     @categories.include?('catering.restaurant')
   end
+<<<<<<< HEAD
+=======
+
+  def is_luke_awesome?
+    true
+  end
+>>>>>>> main
 end

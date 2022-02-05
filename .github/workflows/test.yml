@@ -1,6 +1,14 @@
 name: Test
 
 # triggers on
+# on:
+#   workflow_dispatch:
+#   inputs:
+#     debug_enabled:
+#       description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'
+#       required: false
+#       default: false
+
 on: [push]
 
 jobs:
@@ -8,6 +16,7 @@ jobs:
     env:
       RAILS_ENV: test
       NODE_ENV: test
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
     runs-on: ubuntu-latest # runner
     services:
     # Label used to access the service container
@@ -28,6 +37,9 @@ jobs:
     steps:
       - name: Checkout repository # copies repo in runner
         uses: actions/checkout@v2 # short for https://github.com/actions/checkout
+      # - name: Setup tmate session
+      #   uses: mxschmitt/action-tmate@v3
+      #   if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.debug_enabled }}
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1 # short for https://github.com/ruby/setup-ruby
         with:
