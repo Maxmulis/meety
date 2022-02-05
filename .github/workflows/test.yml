@@ -52,6 +52,6 @@ jobs:
           cp config/database.github.yml config/database.yml
           bundle exec rails db:create db:migrate
       - name: Run tests
-          env:
-            RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+        env:
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: bundle exec rspec
