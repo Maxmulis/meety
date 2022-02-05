@@ -1,14 +1,15 @@
 name: Test
 
 # triggers on
-on: [push]
+on:
   workflow_dispatch:
-    inputs:
-      debug_enabled:
-        description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'
-        required: false
-        default: false
+  inputs:
+    debug_enabled:
+      description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'
+      required: false
+      default: false
 
+on: [push]
 jobs:
   test:
     env:
