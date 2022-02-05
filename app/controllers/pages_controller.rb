@@ -4,16 +4,19 @@ class PagesController < ApplicationController
   rescue_from Net::HTTPBadRequest, with: :bad_request
 
   def index
-    cat = 'catering.restaurant'
-    lat = 52.5068959
-    long = 13.3892484 #rate mal wo das ist? :D
-    range = 1000
-    filters = "circle:#{long},#{lat},#{range}&limit=2" # filters = 'circle:-87.770231,41.878968,5000'
-    api_key_string = Rails.application.credentials.geoapify
-    uri = URI("https://api.geoapify.com/v2/places?categories=#{cat}&filter=#{filters}&apiKey=#{api_key_string}")
-    res = Net::HTTP.get_response(uri)
-    json = JSON.parse(res.body)
-    render json: json, status: :ok
+    # json = GetPage.call("")
+    # render json: json, status: :ok
+  end
+
+  def show
+    address_uno = params[:address_field_one]
+    address_dos = params[:address_field_two]
+
+    coordinates_uno = GetGeocodeAddress.call(address_uno)
+    coordinates_dos = GetGeocodeAddress.call(address_dos)
+
+    @place_uno = GetPlace.call(coordinates_uno)
+    @place_dos = GetPlace.call(coordinates_dos)
   end
 
   private
