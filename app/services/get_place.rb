@@ -2,12 +2,14 @@ require 'net/http'
 
 class GetPlace < ApplicationService
   API_KEY = Rails.application.credentials.geoapify
+  raise StandardError.new("GEOAPIFY_API_KEY unretrievable") if API_KEY.nil?
 
   def initialize(coordinates)
     @coordinates = coordinates
   end
 
   def call
+
     cat = 'catering.restaurant'
     range = 1000
     filters = "circle:#{@coordinates[:lon]},#{@coordinates[:lat]},#{range}&limit=1"
