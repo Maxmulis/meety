@@ -10,11 +10,13 @@ name: Test
 #       default: false
 
 on: [push]
+
 jobs:
   test:
     env:
       RAILS_ENV: test
       NODE_ENV: test
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
     runs-on: ubuntu-latest # runner
     services:
     # Label used to access the service container
@@ -33,8 +35,6 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     steps:
-      - env:
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       - name: Checkout repository # copies repo in runner
         uses: actions/checkout@v2 # short for https://github.com/actions/checkout
       # - name: Setup tmate session
