@@ -6,7 +6,7 @@ RSpec.describe GetGeocodeAddress, type: :services do
   it { is_expected.to be_a(Class) }
 
   describe '#call' do
-    let(:input) { "Rudi-Dutschke-Str. 2236, Berlin" }
+    let(:input) { "Rudi-Dutschke-Str. 26, Berlin" }
 
     context 'when called with a valid address returns hash with lon and lat' do
       it {
