@@ -7,7 +7,7 @@ RSpec.describe GetGeocodeAddress, type: :services do
         GetGeocodeAddress.new("Rudi-Dutschke-Str. 26, Berlin").call
       end
       it "returns a hash with the correct lon and lat" do
-        expect(valid_address).to eq({ lon: 13.3913749, lat: 52.506872 })
+        expect(valid_address).to eq(lon: 13.3913749, lat: 52.506872)
       end
     end
 
