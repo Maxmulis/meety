@@ -59,6 +59,8 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
       - name: Yarn install
         run: yarn install --frozen-lockfile
+      - name: Build Esbuild
+        run: yarn build
       - name: Prepare DB
         run: | # Pipe is important, adds line breaks
           cp config/database.github.yml config/database.yml
