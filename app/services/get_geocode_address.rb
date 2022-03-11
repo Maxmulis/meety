@@ -9,11 +9,13 @@ class GetGeocodeAddress < ApplicationService
 
   def call
     raise StandardError, "invalid address" if @address.empty?
-    raise StandardError, "unspecific address" unless @address.match?(/\d/)
 
     uri = URI("https://api.geoapify.com/v1/geocode/search?text=#{@address}&filter=countrycode:de&apiKey=#{API_KEY}")
     res = Net::HTTP.get_response(uri)
     response = JSON.parse(res.body)
+
+    raise StandardError, "unspecific address" if response['features'].count > 1
+
     {
       lon: response['features'].first['properties']['lon'],
       lat: response['features'].first['properties']['lat']
