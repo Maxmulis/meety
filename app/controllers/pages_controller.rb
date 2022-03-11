@@ -4,7 +4,6 @@ class PagesController < ApplicationController
   rescue_from Net::HTTPBadRequest, with: :bad_request
 
   def index
-    GetTempToken.call
     # json = GetPage.call("")
     # render json: json, status: :ok
   end
@@ -15,7 +14,7 @@ class PagesController < ApplicationController
 
     coordinates_uno = GetGeocodeAddress.call(address_uno)
     coordinates_dos = GetGeocodeAddress.call(address_dos)
-
+    @token = GetTempToken.call
     @place_uno = GetPlace.call(coordinates_uno)
     @place_dos = GetPlace.call(coordinates_dos)
     @people_markers = [@place_uno, @place_dos].map { |place| { lat: place.lat, lon: place.lon } }
