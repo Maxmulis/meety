@@ -9,15 +9,20 @@ class PagesController < ApplicationController
   end
 
   def show
-    address_uno = CGI.escape(params[:address_field_one])
-    address_dos = CGI.escape(params[:address_field_two])
+    address_one = CGI.escape(params[:address_field_one])
+    address_two = CGI.escape(params[:address_field_two])
 
-    coordinates_uno = GetGeocodeAddress.call(address_uno)
-    coordinates_dos = GetGeocodeAddress.call(address_dos)
-    @token = GetTempToken.call
-    @place_uno = GetPlace.call(coordinates_uno)
-    @place_dos = GetPlace.call(coordinates_dos)
-    @people_markers = [@place_uno, @place_dos].map { |place| { lat: place.lat, lon: place.lon } }
+    @person_one = GetGeocodeAddress.call(address_one)
+    @person_two = GetGeocodeAddress.call(address_two)
+
+    if @person_one.valid? && @person_two.valid?
+      @token = GetTempToken.call
+      @people_markers = [@person_one, @person_two].map do |place|
+        { lat: place.lat, lon: place.lon }
+      end
+    else
+      render :index
+    end
   end
 
   private
