@@ -8,17 +8,15 @@ class GetGeocodeAddress < ApplicationService
   end
 
   def call
-    raise StandardError, "invalid address" if @address.empty?
-
     uri = URI("https://api.geoapify.com/v1/geocode/search?text=#{@address}&filter=countrycode:de&apiKey=#{API_KEY}")
     res = Net::HTTP.get_response(uri)
     response = JSON.parse(res.body)
 
-    raise StandardError, "unspecific address" if response['features'].count > 1
-
-    {
-      lon: response['features'].first['properties']['lon'],
-      lat: response['features'].first['properties']['lat']
-    }
+    place = Place.new
+    unless response['features'].nil?
+      place.lon = response['features'].first['properties']['lon']
+      place.lat = response['features'].first['properties']['lat']
+    end
+    return place
   end
 end

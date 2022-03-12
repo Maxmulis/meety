@@ -1,8 +1,8 @@
 class Place
   include ActiveModel::Model
-  attr_reader :lat, :lon, :name, :number, :street
+  attr_accessor :lat, :lon, :name, :number, :street
 
-  validates :lat, :lon, :name, presence: true
+  validates :lat, :lon, presence: true
 
   def initialize(attr = {})
     attr = JSON.parse(attr, symbolize_names: true) if attr.is_a?(String)
