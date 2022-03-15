@@ -2,6 +2,7 @@ require 'net/http'
 
 class GeocodeAddress < ApplicationService
   API_KEY = Rails.application.credentials.geoapify
+  raise StandardError, "GEOAPIFY_API_KEY unretrievable" if API_KEY.nil?
 
   def initialize(address)
     @address = address
