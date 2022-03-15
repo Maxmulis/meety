@@ -16,8 +16,13 @@ class MeetyController < ApplicationController
     @person_two = GeocodeAddress.call(address_two)
 
     if @person_one.valid? && @person_two.valid?
+      midpoint = GeographicMidpoint.call(@person_one, @person_two)
+      suggestions = [FetchSuggestion.call(midpoint)]
       @token = FetchTempToken.call
       @people_markers = [@person_one, @person_two].map do |place|
+        { lat: place.lat, lon: place.lon }
+      end
+      @suggestions_markers = suggestions.map do |place|
         { lat: place.lat, lon: place.lon }
       end
     else
