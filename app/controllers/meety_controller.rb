@@ -15,6 +15,8 @@ class MeetyController < ApplicationController
     @person_one = GeocodeAddress.call(address_one)
     @person_two = GeocodeAddress.call(address_two)
 
+    @midpoint = GeographicMidpoint.call([@person_one, @person_two])
+
     if @person_one.valid? && @person_two.valid?
       @token = FetchTempToken.call
       @people_markers = [@person_one, @person_two].map do |place|
