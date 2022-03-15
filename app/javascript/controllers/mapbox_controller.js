@@ -8,7 +8,6 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log("hello!")
     mapboxgl.accessToken = this.tokenValue
 
     this.map = new mapboxgl.Map({
@@ -16,10 +15,19 @@ export default class extends Controller {
       style: "mapbox://styles/mapbox/streets-v10"
     })
     this.#addPeopleMarkersToMap();
+    this.#addSuggestionsMarkersToMap();
     this.#fitMapToMarkers();
   }
 
   #addPeopleMarkersToMap() {
+    this.peopleMarkersValue.forEach((marker) => {
+      new mapboxgl.Marker()
+        .setLngLat([ marker.lon, marker.lat ])
+        .addTo(this.map)
+    });
+  }
+
+  #addSuggestionsMarkersToMap() {
     this.peopleMarkersValue.forEach((marker) => {
       new mapboxgl.Marker()
         .setLngLat([ marker.lon, marker.lat ])
