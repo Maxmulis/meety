@@ -1,12 +1,28 @@
-<h1>index</h1>
+<div class="form-container">
+    <h1>Meety 🥩</h1>
+    <%= form_with data: { turbo: false }, url: "/show", method: :post do |form| %>
+      <%= form.label :address_field_one, "Your address" %>
+      <%= form.text_field :address_field_one, required: "required", class: "form-input-field" %>
+      <%= form.label :address_field_two, "Your friend's address" %>
+      <%= form.text_field :address_field_two, required: "required", class: "form-input-field" %>
 
-<%= form_with data: { turbo: false }, url: "/results", method: :post do |form| %>
-  <%= form.label :address_field_one, "Your address" %>
-  <%= form.text_field :address_field_one, required: "required" %>
-  <%= form.label :address_field_two, "Your friend's address" %>
-  <%= form.text_field :address_field_two, required: "required" %>
-  <%= form.submit "🙅 Fire it up" %>
-<% end %>
+      <div class="options-container">
+        <div>
+          <h3>Categories</h3>
+          <% @categories.each do |category, description| %>
+            <%= form.label category, description %>
+            <%= form.check_box category %>
+          <% end %>
+        </div>
+        <div>
+          <h3>Conditions</h3>
+          <% @conditions.each do |condition, description| %>
+            <%= form.label :conditions, description %>
+            <%= form.radio_button condition, "#{condition}" %>
+          <% end %>
+        </div>
+      </div>
 
-<div data-controller="hello">
+      <%= form.submit "🙅 Fire it up", class: "form-button" %>
+    <% end %>
 </div>
