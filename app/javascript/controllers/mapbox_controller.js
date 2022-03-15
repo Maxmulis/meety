@@ -4,7 +4,8 @@ import mapboxgl from "mapbox-gl"
 export default class extends Controller {
   static values = {
     token: String,
-    peopleMarkers: Array
+    peopleMarkers: Array,
+    suggestionsMarkers: Array
   }
 
   connect() {
@@ -28,7 +29,7 @@ export default class extends Controller {
   }
 
   #addSuggestionsMarkersToMap() {
-    this.peopleMarkersValue.forEach((marker) => {
+    this.suggestionsMarkersValue.forEach((marker) => {
       new mapboxgl.Marker()
         .setLngLat([ marker.lon, marker.lat ])
         .addTo(this.map)
