@@ -1,4 +1,4 @@
-class GetTempToken < ApplicationService
+class FetchTempToken < ApplicationService
   def call
     mapbox_token = Rails.application.credentials.mapbox
     expires = (DateTime.now + 10.minutes).strftime("%FT%T%:z")

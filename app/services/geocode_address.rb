@@ -1,6 +1,6 @@
 require 'net/http'
 
-class GetGeocodeAddress < ApplicationService
+class GeocodeAddress < ApplicationService
   API_KEY = Rails.application.credentials.geoapify
 
   def initialize(address)
