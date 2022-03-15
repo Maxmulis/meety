@@ -1,0 +1,2 @@
+module MeetyHelper
+end

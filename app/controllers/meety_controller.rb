@@ -1,27 +1,27 @@
 require 'net/http'
 
-class PagesController < ApplicationController
+class MeetyController < ApplicationController
   rescue_from Net::HTTPBadRequest, with: :bad_request
 
-  def index
+  def start
     # json = GetPage.call("")
     # render json: json, status: :ok
   end
 
-  def show
+  def results
     address_one = CGI.escape(params[:address_field_one])
     address_two = CGI.escape(params[:address_field_two])
 
-    @person_one = GetGeocodeAddress.call(address_one)
-    @person_two = GetGeocodeAddress.call(address_two)
+    @person_one = GeocodeAddress.call(address_one)
+    @person_two = GeocodeAddress.call(address_two)
 
     if @person_one.valid? && @person_two.valid?
-      @token = GetTempToken.call
+      @token = FetchTempToken.call
       @people_markers = [@person_one, @person_two].map do |place|
         { lat: place.lat, lon: place.lon }
       end
     else
-      render :index
+      render :results
     end
   end
 

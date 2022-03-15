@@ -1,6 +1,6 @@
 require 'net/http'
 
-class GetPlace < ApplicationService
+class FetchSuggestion < ApplicationService
   API_KEY = Rails.application.credentials.geoapify
   raise StandardError, "GEOAPIFY_API_KEY unretrievable" if API_KEY.nil?
 
