@@ -10,7 +10,7 @@ class FetchSuggestion < ApplicationService
 
   def call
     cat = 'catering.restaurant'
-    filters = "circle:#{@place[:lon]},#{@place[:lat]}&limit=1"
+    filters = "circle:#{@place.lon},#{@place.lat},1000&limit=1"
     uri = URI("https://api.geoapify.com/v2/places?categories=#{cat}&filter=#{filters}&apiKey=#{API_KEY}")
     res = Net::HTTP.get_response(uri)
     response = JSON.parse(res.body, symbolize_names: true)
