@@ -80,3 +80,4 @@ end
 
 gem 'service_actor'
 gem 'service_actor-rails'
+gem 'simple_form'
