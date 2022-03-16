@@ -30,15 +30,15 @@ export default class extends Controller {
 
   #addSuggestionsMarkersToMap() {
     this.suggestionsMarkersValue.forEach((marker) => {
-      new mapboxgl.Marker()
+      new mapboxgl.Marker({color: "#d42014"})
         .setLngLat([ marker.lon, marker.lat ])
-        .addTo(this.map)
-    });
-  }
+        .addTo(this.map);
+    }
+  )};
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
     this.peopleMarkersValue.forEach(marker => bounds.extend([ marker.lon, marker.lat ]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
-  }
+  };
 }
