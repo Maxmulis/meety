@@ -31,26 +31,28 @@ module MeetyHelper
   VALID = %w[internet_access wheelchair dogs vegetarian halal kosher organic]
 
   def self.generate_query_string(opts)
-    case VALID.include?(opts["dogs"])
-    when true then transform_conditions(opts)
-    else transform_categories(opts) end
+    case VALID.include?(opts.first)
+    when true then MeetyHelper.transform_conditions(opts)
+    else MeetyHelper.transform_categories(opts) end
   end
 
   def self.select_categories(categories_hash)
-    categories_hash.select { |_, value| value == "1" }
+    categories_hash.select { |_, value| value == "1" }.keys
   end
 
   def self.select_conditions(conditions_hash)
-    conditions_hash.select { |key| VALID.include?(key) }
+    conditions_hash.select { |key| VALID.include?(key) }.keys
   end
 
-  protected
-
-  def transform_conditions(hash = {})
-    hash.map { |k| "conditions=#{k}" }
+  def self.transform_categories(hash)
+    hash.each_with_index.map do |category, i|
+      i == 0 ? "categories=#{category}" : category
+    end
   end
 
-  def transform_categories(hash = {})
-    hash.map { |k| "categories=#{k}" }
+  def self.transform_conditions(hash)
+    hash.each_with_index.map do |condition, i|
+      i == 0 ? "conditions=#{condition}" : v
+    end
   end
 end
