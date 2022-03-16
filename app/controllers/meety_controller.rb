@@ -2,6 +2,7 @@ require 'net/http'
 
 class MeetyController < ApplicationController
   include MeetyHelper
+
   rescue_from Net::HTTPBadRequest, with: :bad_request
 
   def start
@@ -21,11 +22,9 @@ class MeetyController < ApplicationController
 
     if @person_one.valid? && @person_two.valid?
       midpoint = GeographicMidpoint.call([@person_one, @person_two])
-      suggestions = [
-        FetchSuggestion.call(place: midpoint,
-                             categories: MeetyHelper.generate_query_string(@categories),
-                             conditions: MeetyHelper.generate_query_string(@conditions))
-      ]
+      suggestions = FetchSuggestions.call(place: midpoint,
+                                          categories: MeetyHelper.generate_query_string(@categories),
+                                          conditions: MeetyHelper.generate_query_string(@conditions))
       @token = FetchTempToken.call
       @people_markers = [@person_one, @person_two].map do |place|
         { lat: place.lat, lon: place.lon }
@@ -42,9 +41,5 @@ class MeetyController < ApplicationController
 
   def bad_request(error)
     render json: error.body, status: :bad_request
-  end
-
-  def strong_params(params)
-    params.permit(CATEGORIES.keys + CONDITIONS.keys)
   end
 end
