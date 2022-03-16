@@ -1,6 +1,6 @@
 <div class="form-container">
     <h1>Meety 🥩</h1>
-    <%= form_with data: { turbo: false }, url: "/show", method: :post do |form| %>
+    <%= form_with data: { turbo: false }, url: "/results", method: :post do |form| %>
       <%= form.label :address_field_one, "Your address" %>
       <%= form.text_field :address_field_one, required: "required", class: "form-input-field" %>
       <%= form.label :address_field_two, "Your friend's address" %>
