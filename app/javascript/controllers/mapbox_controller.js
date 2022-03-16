@@ -30,6 +30,11 @@ export default class extends Controller {
 
   #addSuggestionsMarkersToMap() {
     this.suggestionsMarkersValue.forEach((marker) => {
+      const el = document.createElement('div');
+      el.className = 'suggestion-marker';
+      el.style.width = `25px`;
+      el.style.height = `25px`;
+      el.style.backgroundSize = '100%';
       new mapboxgl.Marker()
         .setLngLat([ marker.lon, marker.lat ])
         .addTo(this.map)
