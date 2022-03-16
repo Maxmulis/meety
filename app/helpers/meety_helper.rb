@@ -21,7 +21,7 @@ module MeetyHelper
 
   def self.transform_conditions(hash)
     hash.each_with_index.map do |condition, index|
-      index.zero? ? "conditions=#{condition}" : v
+      index.zero? ? "conditions=#{condition}" : condition
     end
   end
 
