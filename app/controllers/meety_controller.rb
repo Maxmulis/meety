@@ -30,7 +30,10 @@ class MeetyController < ApplicationController
         { lat: place.lat, lon: place.lon }
       end
       @suggestions_markers = suggestions.map do |place|
-        { lat: place.lat, lon: place.lon }
+        {
+          lat: place.lat, lon: place.lon,
+          info_window: render_to_string(partial: "marker_popup", locals: { place: place })
+        }
       end
     else
       render :results
