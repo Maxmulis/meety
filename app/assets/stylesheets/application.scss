@@ -9,6 +9,7 @@
 
 // Custom
 @import "meety/start";
+@import "toggle/toggle";
 
 * {
   margin: 0;
@@ -17,7 +18,27 @@
 }
 
 body {
-  background-color: #FFF9EB;
+  background-color: $_1l;
+  color: $_2d;
+}
+
+body.active {
+  background-color: $_1d;
+  color: $_3l;
+}
+
+a {
+  color: $_4l;
+  text-decoration: none;
+}
+
+a.active {
+  color: $_4l;
+}
+
+a:hover {
+  color: $_4d;
+  font-weight: bold;
 }
 
 p {
@@ -27,6 +48,7 @@ p {
 h1, h2, h3, h4, h5, h6 {
   font-family: $headers-font;
   font-weight: bold;
+  color: $_4l;
 }
 
 h1 {

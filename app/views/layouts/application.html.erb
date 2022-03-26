@@ -11,6 +11,19 @@
   </head>
 
   <body>
+    <div id="toggle">
+      <i class="indicator"></i>  
+    </div>
+
     <%= yield %>
+
+    <script>
+      const body = document.querySelector('body')
+      const toggle = document.getElementById('toggle')
+      toggle.onclick = () => {
+              toggle.classList.toggle('active')
+              body.classList.toggle('active')
+      }
+    </script>
   </body>
 </html>
