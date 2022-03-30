@@ -23,7 +23,7 @@ export default class extends Controller {
   #addPeopleMarkersToMap() {
     this.peopleMarkersValue.forEach((marker) => {
       new mapboxgl.Marker()
-        .setLngLat([ marker.lon, marker.lat ])
+        .setLngLat([marker.lon, marker.lat])
         .addTo(this.map)
     });
   }
@@ -31,16 +31,17 @@ export default class extends Controller {
   #addSuggestionsMarkersToMap() {
     this.suggestionsMarkersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)
-      new mapboxgl.Marker({color: "#d42014"})
-        .setLngLat([ marker.lon, marker.lat ])
+      new mapboxgl.Marker({ color: "#d42014" })
+        .setLngLat([marker.lon, marker.lat])
         .setPopup(popup)
         .addTo(this.map);
     }
-  )};
+    )
+  };
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
-    this.peopleMarkersValue.forEach(marker => bounds.extend([ marker.lon, marker.lat ]))
+    this.peopleMarkersValue.forEach(marker => bounds.extend([marker.lon, marker.lat]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   };
 }

@@ -5,24 +5,17 @@
     <%= form.text_field :address_field_one, required: "required", class: "form-input-field" %>
     <%= form.label :address_field_two, "Your friend's address" %>
     <%= form.text_field :address_field_two, required: "required", class: "form-input-field" %>
-    <%= form.submit "🙅 Fire it up", class: "form-button" %>
 
-    <div class="options-container">
-      <div>
-        <h3>Categories</h3>
-        <% @categories.each do |category, description| %>
-          <%= form.label category, description %>
-          <%= form.check_box category %>
-        <% end %>
-      </div>
-      <div>
-        <h3>Conditions</h3>
-        <% @conditions.each do |condition, description| %>
-          <%= form.label :conditions, description %>
-          <%= form.radio_button condition, "#{condition}" %>
-        <% end %>
-      </div>
+    <h3>Categories</h3>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;">
+      <% @categories.each do |category, description| %>
+        <div>
+          <%= form.label category, sanitize(description) %>
+          <%= form.check_box category, collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}  %>
+        </div>
+      <% end %>
     </div>
-    <a href="#">TESTING LINKS§</a>
+      
+    <%= form.submit "🙅 Fire it up", class: "form-button" %>
   <% end %>
 </div>
