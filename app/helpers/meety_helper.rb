@@ -29,22 +29,22 @@ module MeetyHelper
   API_KEY = "apiKey=#{Rails.application.credentials.geoapify}"
 
   CATEGORIES = {
-    accomodation: "Place to stay or live",
-    activity: "Clubs, community centers",
-    commercial: "Places where one can buy or sell things",
-    catering: "Places of public catering: restaurants, cafes, bars, etc.",
-    education: "Place that provides learning spaces and learning environments",
-    childcare: "Place that provides care of children service while parents are working",
-    entertainment: "Place that where one can spend free time with amusement",
-    leisure: "Places where one can relax and unwind",
-    natural: "Places where one can enjoy nature, explore natural phenomena",
-    parking: "Places where one can park a car",
-    pet: "Places that can be interesting for pet owners",
-    rent: "Places where one can rent things",
-    service: "Places that provide services to the public",
-    tourism: "Places that can be interesting for tourists",
-    sport: "Infrastructure objects related to different sport kinds",
-    public_transport: "Public transport stations and stops"
+    # accomodation: "Place to stay or live",
+    activity: "<i class=\"fas fa-glass-cheers\"></i>",
+    # commercial: "Places where one can buy or sell things",
+    catering: "<i class=\"fas fa-hamburger\"></i>",
+    # education: "Place that provides learning spaces and learning environments",
+    # childcare: "Place that provides care of children service while parents are working",
+    entertainment: "<i class=\"fas fa-film\"></i>",
+    leisure: "<i class=\"fas fa-couch\"></i>",
+    natural: "<i class=\"fas fa-tree\"></i>",
+    # parking: "Places where one can park a car",
+    # pet: "<i class=\"fas fa-kiwi-bird\"></i>",
+    # rent: "Places where one can rent things",
+    # service: "Places that provide services to the public",
+    # tourism: "Places that can be interesting for tourists",
+    sport: "<i class=\"fas fa-running\"></i>"
+    # public_transport: "<i class=\"fas fa-bus-alt\"></i>"
   }
 
   CONDITIONS = {
