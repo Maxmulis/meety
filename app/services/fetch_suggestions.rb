@@ -18,7 +18,6 @@ class FetchSuggestions < ApplicationService
     uri = URI("#{API_URL}?#{categories}&#{filters}&#{API_KEY}")
     res = Net::HTTP.get_response(uri)
     response = JSON.parse(res.body, symbolize_names: true)
-
     response[:features].map do |hash|
       Place.new(hash[:properties])
     end
