@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root 'meety#start'
-
-  post 'results', to: 'meety#results'
+  get 'start', to: 'meety#start'
+  get 'suggestions', to: 'meety#suggestions'
+  post 'people', to: 'meety#people'
 end

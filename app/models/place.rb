@@ -1,18 +1,19 @@
 class Place
   include ActiveModel::Model
-  attr_accessor :lat, :lon, :name, :number, :street
+  attr_accessor :lat, :lon, :name, :number, :street, :address
 
   validates :lat, :lon, presence: true
 
   def initialize(attr = {})
     attr = JSON.parse(attr, symbolize_names: true) if attr.is_a?(String)
 
-    @lat = attr[:lat]
-    @lon = attr[:lon]
-    @name = attr[:name]
-    @number = attr[:number] || attr[:housenumber].to_i
-    @street = attr[:street]
+    @address = attr[:address]
     @categories = attr[:categories]
+    @lat = attr[:lat].to_i
+    @lon = attr[:lon].to_i
+    @number = attr[:number] || attr[:housenumber].to_i
+    @name = attr[:name]
+    @street = attr[:street]
   end
 
   def is_restaurant?
