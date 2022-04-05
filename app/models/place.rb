@@ -9,8 +9,8 @@ class Place
 
     @address = attr[:address]
     @categories = attr[:categories]
-    @lat = attr[:lat].to_i
-    @lon = attr[:lon].to_i
+    @lat = attr[:lat].to_f
+    @lon = attr[:lon].to_f
     @number = attr[:number] || attr[:housenumber].to_i
     @name = attr[:name]
     @street = attr[:street]

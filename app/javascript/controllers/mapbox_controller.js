@@ -5,7 +5,8 @@ export default class extends Controller {
   static values = {
     token: String,
     peopleMarkers: Array,
-    suggestionsMarkers: Array
+    suggestionsMarkers: Array,
+    categories: Array
   }
 
   connect() {
@@ -16,8 +17,8 @@ export default class extends Controller {
       style: "mapbox://styles/mapbox/streets-v10"
     })
     this.#addPeopleMarkersToMap();
-    this.#addSuggestionsMarkersToMap();
     this.#fitMapToMarkers();
+    this.#fetchandaddSuggestionsMarkersToMap();
   }
 
   #addPeopleMarkersToMap() {
@@ -28,16 +29,22 @@ export default class extends Controller {
     });
   }
 
-  #addSuggestionsMarkersToMap() {
-    this.suggestionsMarkersValue.forEach((marker) => {
-      const popup = new mapboxgl.Popup().setHTML(marker.info_window)
-      new mapboxgl.Marker({ color: "#d42014" })
+  #fetchandaddSuggestionsMarkersToMap() {
+    // fetch suggestions markers (json) from server
+    // iterate over markers and add to map
+    const personOne = this.peopleMarkersValue[0]
+    const personTwo = this.peopleMarkersValue[1]
+    const url = encodeURI(`/suggestions?person_one_lat=${personOne.lat}&person_one_lon=${personOne.lon}&person_two_lat=${personTwo.lat}&person_two_lon=${personTwo.lon}&categories=${this.categoriesValue.join(",")}`)
+    fetch(url)
+      .then(response => response.json())
+      .then(markers => markers.forEach((marker) => {
+        const popup = new mapboxgl.Popup().setHTML(marker.info_window)
+        new mapboxgl.Marker({ color: "#d42014" })
         .setLngLat([marker.lon, marker.lat])
         .setPopup(popup)
         .addTo(this.map);
-    }
-    )
-  };
+      })
+      )};
 
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()

@@ -1,8 +1,10 @@
-<div class="container">
-  <div style="width: 100%; height: 600px;"
-    data-controller="mapbox"
-    data-mapbox-people-markers-value="<%= @people_markers.to_json %>"
-    data-mapbox-suggestions-markers-value="<%= @suggestions_markers.nil? ? [].to_json : @suggestions_markers.to_json %>"
-    data-mapbox-token-value="<%= @token %>">
+<%= turbo_frame_tag "main" do %>
+  <div class="container">
+    <div style="width: 100%; height: 600px;"
+      data-controller="mapbox"
+      data-mapbox-people-markers-value="<%= @people_markers.to_json %>"
+      data-mapbox-token-value="<%= @token %>"
+      data-mapbox-categories-value="<%= @categories %>">
+    </div>
   </div>
-</div>
+<% end %>
