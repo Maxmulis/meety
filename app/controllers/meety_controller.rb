@@ -10,7 +10,7 @@ class MeetyController < ApplicationController
     @conditions = CONDITIONS
   end
 
-  def people
+  def map
     person_one_place = Place.new(address: CGI.escape(params[:address_field_one]))
     person_two_place = Place.new(address: CGI.escape(params[:address_field_two]))
 
@@ -19,37 +19,26 @@ class MeetyController < ApplicationController
     @categories = MeetyHelper.select_categories(params)
     # @conditions = MeetyHelper.select_conditions(params)
     @token = FetchTempToken.call
-      @people_markers = [@person_one, @person_two].map do |place|
-        { lat: place.lat, lon: place.lon }
-      end
+    @people_markers = [@person_one, @person_two].map do |place|
+      { lat: place.lat, lon: place.lon }
+    end
   end
 
   def suggestions
     @categories = params[:categories].split(',')
-    @person_one = Place.new(lat: params[:person_one_lat], lon: params[:person_one_lon])
-    @person_two = Place.new(lat: params[:person_two_lat], lon: params[:person_two_lon])
-    if @person_one.valid? && @person_two.valid?
-      midpoint = GeographicMidpoint.call([@person_one, @person_two])
-      suggestions = FetchSuggestions.call(place: midpoint,
-                                          categories: MeetyHelper.generate_query_string(@categories),)
-                                          # conditions: MeetyHelper.generate_query_string(@conditions)
-      @token = params[:token]
-      @people_markers = [@person_one, @person_two].map do |place|
-        { lat: place.lat, lon: place.lon }
-      end
-      @suggestions_markers = suggestions.map do |place|
-        {
-          lat: place.lat, lon: place.lon,
-          info_window: render_to_string(partial: "marker_popup", locals: { place: place })
-        }
-      end
-      respond_to do |format|
-        format.html { render :suggestions }
-        format.turbo_stream
-      end
-    else
-      render :results
+    person_one = Place.new(lat: params[:person_one_lat], lon: params[:person_one_lon])
+    person_two = Place.new(lat: params[:person_two_lat], lon: params[:person_two_lon])
+    midpoint = GeographicMidpoint.call([person_one, person_two])
+    suggestions = FetchSuggestions.call(place: midpoint,
+                                        categories: MeetyHelper.generate_query_string(@categories),)
+                                        # conditions: MeetyHelper.generate_query_string(@conditions)
+    suggestions_markers = suggestions.map do |place|
+      {
+        lat: place.lat, lon: place.lon,
+        info_window: render_to_string(partial: "marker_popup", locals: { place: place })
+      }
     end
+    render json: suggestions_markers.to_json
   end
 
   private

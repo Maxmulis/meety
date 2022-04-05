@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   root 'meety#start'
   get 'start', to: 'meety#start'
   get 'suggestions', to: 'meety#suggestions'
-  post 'people', to: 'meety#people'
+  post 'map', to: 'meety#map'
 end
