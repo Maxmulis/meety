@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe GeocodeAddress, type: :services do
+RSpec.describe GeocodePlace, type: :services do
   describe '#call' do
     context 'when called with a valid address' do
       let(:valid_address) do
-        GeocodeAddress.new("Rudi-Dutschke-Str. 26, Berlin").call
+        GeocodePlace.new(Place.new(address: "Rudi-Dutschke-Str. 26, Berlin")).call
       end
       it "returns a hash with the correct lon and lat" do
         expect(lon: valid_address.lon,
