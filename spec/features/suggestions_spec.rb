@@ -8,6 +8,6 @@ feature "get suggestions" do
     fill_in("Your friend's address", with: "Martin-Opitz-Straße 21, 13357 Berlin")
     click_on("🙅 Fire it up")
 
-    expect(page).to have_selector('div.mapboxgl-marker', minimum: 3)
+    expect(page).to have_selector('div.mapboxgl-marker', minimum: 3, wait: 10)
   end
 end
