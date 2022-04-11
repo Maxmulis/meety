@@ -1,0 +1,85 @@
+.category-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.category-item {
+}
+
+.category-item > label > svg {
+  font-size: 30px;
+}
+
+.category-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.category-selector + label {
+  display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 12px;
+  text-align: left;
+  padding: 10px 10px 30px 10px;
+  border: 1px solid #EAEAEA;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.category-selector:checked + label {
+  color: white !important;
+}
+
+
+#activity + label {
+  color: $_4d;
+}
+
+#activity:checked + label {
+  background-color: $_4d;
+}
+
+
+#catering + label {
+  color: $_4d;
+}
+
+#catering:checked + label {
+  background-color: $_4d;
+}
+
+
+#entertainment + label {
+  color: $_4d;
+}
+
+#entertainment:checked + label {
+  background-color: $_4d;
+}
+
+#leisure + label {
+  color: $_4d;
+}
+
+#leisure:checked + label {
+  background-color: $_4d;
+}
+
+#natural + label {
+  color: $_4d;
+}
+
+#natural:checked + label {
+  background-color: $_4d;
+}
+
+#sport + label {
+  color: $_4d;
+}
+
+#sport:checked + label {
+  background-color: $_4d;
+}

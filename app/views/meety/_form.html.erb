@@ -6,15 +6,21 @@
     <%= form.text_field :address_field_two, required: "required", class: "form-input-field" %>
 
     <h3>Categories</h3>
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;">
+    <div class="category-wrapper">
       <% @categories.each do |category, description| %>
-        <div>
-          <%= form.radio_button "categories", category %>
-          <%= form.label category, sanitize(description) %>
-        </div>
+          <%= form.radio_button "categories", category, style: "display: none;" %>
+          <div class="category-item">
+            <%= form.text_field "categories",
+              id: category,
+              value: category,
+              type: "radio",
+              'data-style': "ruby",
+              class: "form-check-input radio_buttons required category-selector" %>
+            <%= form.label category, sanitize(description + "<br>#{category.capitalize}"), class: "form-check-label collection_radio_buttons" %>
+          </div>
       <% end %>
     </div>
 
-    <%= form.submit "🙅 Fire it up", class: "form-button" %>
+    <%= form.submit "Search for some places", class: "form-button" %>
   <% end %>
 </div>
