@@ -10,6 +10,7 @@
 // Custom
 @import "meety/start";
 @import "toggle/toggle";
+@import "footer/footer";
 
 * {
   margin: 0;
@@ -21,6 +22,9 @@ body {
   background-color: $_1l;
   color: $_2d;
 }
+
+// Real FrOnTeNd HaCk 🤓
+// html, body { margin: 0; height: 100%; overflow: hidden }
 
 body.active {
   background-color: $_1d;

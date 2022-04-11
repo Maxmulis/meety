@@ -17,8 +17,11 @@
 
     <%= yield %>
 
+    <%= render "footer" %>
+
     <script>
       const body = document.querySelector('body')
+      const footer = document.querySelector('footer')
       const toggle = document.getElementById('toggle')
       toggle.onclick = () => {
               toggle.classList.toggle('active')

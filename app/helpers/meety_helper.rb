@@ -6,7 +6,7 @@ module MeetyHelper
   end
 
   def self.select_categories(categories_hash)
-    categories_hash.select { |_, value| value == "1" }.keys
+    categories_hash.select { |v| v == "categories" }.values
   end
 
   def self.select_conditions(conditions_hash)
