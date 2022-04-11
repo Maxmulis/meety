@@ -2,15 +2,9 @@
   margin-top: 120px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   height: 100px;
   padding: 0px 50px;
-
-  color: $_1d;
-}
-
-.footer.active {
-  color: $_3d;
 }
 
 .footer-links {
@@ -32,7 +26,3 @@
 .footer .fa-heart {
   color: $_4d;
 }
-
-// .footer-copyright p {
-//   opacity: 0.25;
-// }
