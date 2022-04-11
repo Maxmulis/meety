@@ -6,11 +6,11 @@
     <%= form.text_field :address_field_two, required: "required", class: "form-input-field" %>
 
     <h3>Categories</h3>
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;">
       <% @categories.each do |category, description| %>
         <div>
+          <%= form.radio_button "categories", category %>
           <%= form.label category, sanitize(description) %>
-          <%= form.check_box category, collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper', item_wrapper_class: 'category-item', input_html: {class: 'category-selector'}  %>
         </div>
       <% end %>
     </div>

@@ -1,0 +1,38 @@
+.footer {
+  margin-top: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0px 50px;
+
+  color: $_1d;
+}
+
+.footer.active {
+  color: $_3d;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+}
+
+.footer-links a {
+  opacity: 0.25;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 10px;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+}
+
+.footer .fa-heart {
+  color: $_4d;
+}
+
+// .footer-copyright p {
+//   opacity: 0.25;
+// }
