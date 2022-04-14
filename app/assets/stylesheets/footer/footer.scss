@@ -1,5 +1,5 @@
 .footer {
-  margin-top: 120px;
+  margin-top: 50px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -24,5 +24,11 @@
 }
 
 .footer .fa-heart {
-  color: $_4d;
+  color: #E90A96;
+}
+
+@media only screen and (max-width: 750px) {
+  .footer-copyright > p {
+    font-size: 12px;
+  }
 }

@@ -3,11 +3,6 @@
   flex-direction: column;
 }
 
-h1 {
-  margin: 0 auto;
-  width: 50%;
-}
-
 .form-container > form {
   width: 50vw;
   margin: 0 auto;
@@ -21,16 +16,33 @@ h1 {
 
 .form-input-field {
   width: 100%;
+  background-color: $_2l;
+  box-shadow: 0px 2px 4px rgba(45, 35, 66, 0.4),0px 7px 13px -3px rgba(45, 35, 66, 0.3),inset 0px -3px 0px #D6D6E7;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
+.form-input-field:focus {
+  outline: none;
+}
+
+.form-input-field:focus {
+  box-shadow: 0 0 0 1px $_4l,0px 7px 13px -3px rgba(45, 35, 66, 0.3),inset 0px -3px 0px #D6D6E7;
+  // box-shadow: 0 0 0 1pt $_4l;
+}
+
 .form-button {
-  background-color: $_4l;
+  // background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);
+  background: radial-gradient(100% 100% at 100% 0%, #5ADAFF 0%, #5468FF 100%);
+  box-shadow: 0px 2px 4px rgba(45, 35, 66, 0.4),0px 7px 13px -3px rgba(45, 35, 66, 0.3),inset 0px -3px 0px rgba(58, 65, 111, 0.5);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.15s ease,transform 0.15s ease;
+
+  // background-color: $_4l;
   border: none;
   border-radius: 4px;
   color: white;
@@ -50,8 +62,14 @@ h1 {
   display: block;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 750px) {
   .form-container > form {
     width: 90%;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .form-button {
+    font-size: 20px;
   }
 }

@@ -6,7 +6,7 @@ feature "get suggestions" do
     visit root_path
     fill_in("Your address", with: "Manteuffelstr. 77, 10999 Berlin")
     fill_in("Your friend's address", with: "Martin-Opitz-Straße 21, 13357 Berlin")
-    click_on("🙅 Fire it up")
+    click_on("Search for some places"
 
     expect(page).to have_selector('div.mapboxgl-marker', minimum: 3, wait: 10)
   end
