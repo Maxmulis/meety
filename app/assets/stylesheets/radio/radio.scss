@@ -17,6 +17,12 @@
   font-size: 30px;
 }
 
+@media only screen and (max-width: 350px) {
+  .category-item > label > p {
+    display: none;
+  }
+}
+
 .category-selector {
   position: absolute;
   transform: scale(0);
@@ -39,7 +45,6 @@
 .category-selector:checked + label {
   color: #fff !important;
 }
-
 
 #activity + label {
   color: $_2d;

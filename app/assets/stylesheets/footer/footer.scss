@@ -23,12 +23,18 @@
   opacity: 1;
 }
 
-.footer .fa-heart {
-  color: #E90A96;
+.footer-copyright p {
+  opacity: 0.25;
 }
 
 @media only screen and (max-width: 750px) {
   .footer-copyright > p {
     font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .footer-copyright > p {
+    font-size: 10px;
   }
 }

@@ -10,7 +10,7 @@
   flex-direction: column;
 }
 
-.form-container > form > input:last-child {
+.form-container > form > input:nth-child(8) {
   margin-top: 25px;
 }
 
@@ -71,5 +71,11 @@
 @media only screen and (max-width: 750px) {
   .form-button {
     font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .form-button {
+    font-size: 15px;
   }
 }
