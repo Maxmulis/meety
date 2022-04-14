@@ -20,7 +20,9 @@
 }
 
 body {
-  background-color: $_1l;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
   color: $_2d;
 }
 
@@ -29,7 +31,7 @@ body {
 
 body.active {
   background-color: $_1d;
-  color: $_3l;
+  color: $_2l;
 }
 
 a {
@@ -42,7 +44,7 @@ a.active {
 }
 
 a:hover {
-  color: $_4d;
+  color: #E90A96;
   font-weight: bold;
 }
 
@@ -53,9 +55,9 @@ p {
 h1, h2, h3, h4, h5, h6 {
   font-family: $headers-font;
   font-weight: bold;
-  color: $_4l;
 }
 
 h1 {
   font-size: 8rem;
+  margin: 0 auto;
 }
