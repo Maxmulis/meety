@@ -1,0 +1,18 @@
+header {
+  margin: 0 auto;
+  width: 50vw;
+}
+
+@media only screen and (max-width: 750px) {
+  header {
+    margin-left: 22.84375px;
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  header {
+    margin-left: 14.796875px;
+    width: 90%;
+  }
+}
