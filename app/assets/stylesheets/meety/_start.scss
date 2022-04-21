@@ -54,6 +54,10 @@
   cursor: pointer;
 }
 
+.form-button:hover {
+  background: radial-gradient(100% 100% at 100% 0%, #63dcff 0%, #5e71ff 100%);
+}
+
 .options-container {
   display: flex;
 }
