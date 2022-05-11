@@ -1,3 +1,16 @@
-<%= turbo_frame_tag "main" do %>
-  <%= render "map" %>
-  <% end %>
+<h1>Meety</h1>
+<div class="container" data-controller="reveal">
+
+  <div class="d-flex justify-content-center mb-2"  data-action="mapbox:hide@window->reveal#hide">
+    <div class="spinner-border" role="status" data-reveal-target="item">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <div style="width: 100%; height: 600px;" data-controller="mapbox"
+      data-mapbox-people-markers-value="<%= @people_markers.to_json %>"
+      data-mapbox-token-value="<%= @token %>"
+      data-mapbox-categories-value="<%= @categories %>">
+  </div>
+
+</div>
