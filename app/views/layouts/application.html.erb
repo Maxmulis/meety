@@ -10,12 +10,17 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-    <div id="toggle">
-      <i class="indicator"></i>  
-    </div>
+  <body class="container">
+    <!-- Needs major rework -->
+    <!-- <div id="toggle"> -->
+    <!--   <i class="indicator"></i>   -->
+    <!-- </div> -->
 
-    <%= yield %>
+    <%= render "header" %>
+
+    <main>
+      <%= yield %>
+    </main>
 
     <%= render "footer" %>
 

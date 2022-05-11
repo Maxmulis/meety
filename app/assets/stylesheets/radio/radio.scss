@@ -1,0 +1,109 @@
+.category-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .category-wrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.category-item {
+}
+
+.category-item > label > svg {
+  font-size: 30px;
+}
+
+@media only screen and (max-width: 350px) {
+  .category-item > label > p {
+    display: none;
+  }
+}
+
+.category-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.category-selector + label {
+  display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 15px;
+  text-align: left;
+  background: radial-gradient( 100% 100% at 100% 0%, #fff 0%, #f5f5fa 100%);
+  box-shadow: 0px 2px 4px rgba(45, 35, 66, 0.4),0px 7px 13px -3px rgba(45, 35, 66, 0.3),inset 0px -3px 0px #D6D6E7;
+  padding: 10px 10px 30px 10px;
+  border-radius: 4px;
+  background-color: $_2l;
+}
+
+.category-selector:checked + label {
+  color: #fff !important;
+}
+
+#activity + label {
+  color: $_2d;
+}
+
+#activity:checked + label {
+  background: radial-gradient( 100% 100% at 100% 0%, #FD89CE 0%, #E90A96 100%);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 2px 4px rgba(45, 35, 66, 0.4),0px 7px 13px -3px rgba(45, 35, 66, 0.3),inset 0px -3px 0px #B80979;
+}
+
+
+#catering + label {
+  color: $_2d;
+}
+
+#catering:checked + label {
+  background: radial-gradient( 100% 100% at 100% 0%, #FD89CE 0%, #E90A96 100%);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 2px 4px rgba(45, 35, 66, 0.4),0px 7px 13px -3px rgba(45, 35, 66, 0.3),inset 0px -3px 0px #B80979;
+}
+
+
+#entertainment + label {
+  color: $_2d;
+}
+
+#entertainment:checked + label {
+  background: radial-gradient( 100% 100% at 100% 0%, #FD89CE 0%, #E90A96 100%);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 2px 4px rgba(45, 35, 66, 0.4),0px 7px 13px -3px rgba(45, 35, 66, 0.3),inset 0px -3px 0px #B80979;
+}
+
+#leisure + label {
+  color: $_2d;
+}
+
+#leisure:checked + label {
+  background: radial-gradient( 100% 100% at 100% 0%, #FD89CE 0%, #E90A96 100%);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 2px 4px rgba(45, 35, 66, 0.4),0px 7px 13px -3px rgba(45, 35, 66, 0.3),inset 0px -3px 0px #B80979;
+}
+
+#natural + label {
+  color: $_2d;
+}
+
+#natural:checked + label {
+  background: radial-gradient( 100% 100% at 100% 0%, #FD89CE 0%, #E90A96 100%);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 2px 4px rgba(45, 35, 66, 0.4),0px 7px 13px -3px rgba(45, 35, 66, 0.3),inset 0px -3px 0px #B80979;
+}
+
+#sport + label {
+  color: $_2d;
+}
+
+#sport:checked + label {
+  background: radial-gradient( 100% 100% at 100% 0%, #FD89CE 0%, #E90A96 100%);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 2px 4px rgba(45, 35, 66, 0.4),0px 7px 13px -3px rgba(45, 35, 66, 0.3),inset 0px -3px 0px #B80979;
+}
