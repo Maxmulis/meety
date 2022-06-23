@@ -12,7 +12,9 @@
     "esbuild": "^0.14.25",
     "esbuild-rails": "^1.0.3",
     "mapbox-gl": "^2.7.0",
-    "sass": "^1.49.9"
+    "sass": "^1.49.9",
+    "stimulus-reveal-controller": "^4.0.0",
+    "stimulus-use": "^0.50.0-2"
   },
   "scripts": {
     "build": "node esbuild.config.js",
